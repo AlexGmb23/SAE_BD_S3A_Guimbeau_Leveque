@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="T_Classe_CLS">
+    <Key>
+      <PropertyRef Name="CLS_Num" />
+    </Key>
+    <Property Name="CLS_Num" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="CLS_Intit" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="T_Eleve_ELV" Relationship="Self.C_FK_ELV_CLS" FromRole="T_Classe_CLS" ToRole="T_Eleve_ELV" />
+  </EntityType>
+  <EntityType Name="T_Eleve_ELV">
+    <Key>
+      <PropertyRef Name="ELV_Id" />
+    </Key>
+    <Property Name="ELV_Id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="ELV_REF_ELV" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="ELV_REF_CLS" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="ELV_Nom" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ELV_AnneeNais" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="ELV_VilleNais" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_Classe_CLS" Relationship="Self.C_FK_ELV_CLS" FromRole="T_Eleve_ELV" ToRole="T_Classe_CLS" />
+    <NavigationProperty Name="T_Eleve_ELV1" Relationship="Self.C_FK_ELV_ELV" FromRole="T_Eleve_ELV" ToRole="T_Eleve_ELV1" />
+    <NavigationProperty Name="T_Eleve_ELV2" Relationship="Self.C_FK_ELV_ELV" FromRole="T_Eleve_ELV1" ToRole="T_Eleve_ELV" />
+    <NavigationProperty Name="T_Epreuve_EPR" Relationship="Self.C_FK_EPR_ELV" FromRole="T_Eleve_ELV" ToRole="T_Epreuve_EPR" />
+    <NavigationProperty Name="T_Recompense_RCP" Relationship="Self.C_FK_RCP_ELV" FromRole="T_Eleve_ELV" ToRole="T_Recompense_RCP" />
+  </EntityType>
+  <EntityType Name="T_Epreuve_EPR">
+    <Key>
+      <PropertyRef Name="EPR_REF_ELV" />
+      <PropertyRef Name="EPR_Abrv" />
+    </Key>
+    <Property Name="EPR_REF_ELV" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="EPR_Abrv" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="EPR_Note" Type="Decimal" Precision="3" Scale="1" />
+    <NavigationProperty Name="T_Eleve_ELV" Relationship="Self.C_FK_EPR_ELV" FromRole="T_Epreuve_EPR" ToRole="T_Eleve_ELV" />
+  </EntityType>
+  <EntityType Name="T_Recompense_RCP">
+    <Key>
+      <PropertyRef Name="RCP_REF_ELV" />
+      <PropertyRef Name="RCP_Annee" />
+    </Key>
+    <Property Name="RCP_REF_ELV" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="RCP_Annee" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+    <NavigationProperty Name="T_Eleve_ELV" Relationship="Self.C_FK_RCP_ELV" FromRole="T_Recompense_RCP" ToRole="T_Eleve_ELV" />
+  </EntityType>
+  <EntityType Name="V_ELV_qqClasses_qqNoms">
+    <Key>
+      <PropertyRef Name="ELV_Id" />
+      <PropertyRef Name="ELV_REF_CLS" />
+      <PropertyRef Name="ELV_Nom" />
+      <PropertyRef Name="ELV_AnneeNais" />
+    </Key>
+    <Property Name="ELV_Id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="ELV_REF_ELV" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="ELV_REF_CLS" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="ELV_Nom" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ELV_AnneeNais" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="ELV_VilleNais" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="C_FK_ELV_CLS">
+    <End Role="T_Classe_CLS" Type="Self.T_Classe_CLS" Multiplicity="1" />
+    <End Role="T_Eleve_ELV" Type="Self.T_Eleve_ELV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Classe_CLS">
+        <PropertyRef Name="CLS_Num" />
+      </Principal>
+      <Dependent Role="T_Eleve_ELV">
+        <PropertyRef Name="ELV_REF_CLS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="C_FK_ELV_ELV">
+    <End Role="T_Eleve_ELV" Type="Self.T_Eleve_ELV" Multiplicity="0..1" />
+    <End Role="T_Eleve_ELV1" Type="Self.T_Eleve_ELV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Eleve_ELV">
+        <PropertyRef Name="ELV_Id" />
+      </Principal>
+      <Dependent Role="T_Eleve_ELV1">
+        <PropertyRef Name="ELV_REF_ELV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="C_FK_EPR_ELV">
+    <End Role="T_Eleve_ELV" Type="Self.T_Eleve_ELV" Multiplicity="1" />
+    <End Role="T_Epreuve_EPR" Type="Self.T_Epreuve_EPR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Eleve_ELV">
+        <PropertyRef Name="ELV_Id" />
+      </Principal>
+      <Dependent Role="T_Epreuve_EPR">
+        <PropertyRef Name="EPR_REF_ELV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="C_FK_RCP_ELV">
+    <End Role="T_Eleve_ELV" Type="Self.T_Eleve_ELV" Multiplicity="1" />
+    <End Role="T_Recompense_RCP" Type="Self.T_Recompense_RCP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Eleve_ELV">
+        <PropertyRef Name="ELV_Id" />
+      </Principal>
+      <Dependent Role="T_Recompense_RCP">
+        <PropertyRef Name="RCP_REF_ELV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="T_Classe_CLS" EntityType="Self.T_Classe_CLS" />
+    <EntitySet Name="T_Eleve_ELV" EntityType="Self.T_Eleve_ELV" />
+    <EntitySet Name="T_Epreuve_EPR" EntityType="Self.T_Epreuve_EPR" />
+    <EntitySet Name="T_Recompense_RCP" EntityType="Self.T_Recompense_RCP" />
+    <EntitySet Name="V_ELV_qqClasses_qqNoms" EntityType="Self.V_ELV_qqClasses_qqNoms" />
+    <AssociationSet Name="C_FK_ELV_CLS" Association="Self.C_FK_ELV_CLS">
+      <End Role="T_Classe_CLS" EntitySet="T_Classe_CLS" />
+      <End Role="T_Eleve_ELV" EntitySet="T_Eleve_ELV" />
+    </AssociationSet>
+    <AssociationSet Name="C_FK_ELV_ELV" Association="Self.C_FK_ELV_ELV">
+      <End Role="T_Eleve_ELV" EntitySet="T_Eleve_ELV" />
+      <End Role="T_Eleve_ELV1" EntitySet="T_Eleve_ELV" />
+    </AssociationSet>
+    <AssociationSet Name="C_FK_EPR_ELV" Association="Self.C_FK_EPR_ELV">
+      <End Role="T_Eleve_ELV" EntitySet="T_Eleve_ELV" />
+      <End Role="T_Epreuve_EPR" EntitySet="T_Epreuve_EPR" />
+    </AssociationSet>
+    <AssociationSet Name="C_FK_RCP_ELV" Association="Self.C_FK_RCP_ELV">
+      <End Role="T_Eleve_ELV" EntitySet="T_Eleve_ELV" />
+      <End Role="T_Recompense_RCP" EntitySet="T_Recompense_RCP" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

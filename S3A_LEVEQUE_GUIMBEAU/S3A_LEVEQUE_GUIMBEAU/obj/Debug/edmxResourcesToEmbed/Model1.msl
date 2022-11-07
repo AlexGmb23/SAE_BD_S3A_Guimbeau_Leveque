@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="T_Classe_CLS">
+      <EntityTypeMapping TypeName="Model.T_Classe_CLS">
+        <MappingFragment StoreEntitySet="T_Classe_CLS">
+          <ScalarProperty Name="CLS_Num" ColumnName="CLS_Num" />
+          <ScalarProperty Name="CLS_Intit" ColumnName="CLS_Intit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Eleve_ELV">
+      <EntityTypeMapping TypeName="Model.T_Eleve_ELV">
+        <MappingFragment StoreEntitySet="T_Eleve_ELV">
+          <ScalarProperty Name="ELV_Id" ColumnName="ELV_Id" />
+          <ScalarProperty Name="ELV_REF_ELV" ColumnName="ELV_REF_ELV" />
+          <ScalarProperty Name="ELV_REF_CLS" ColumnName="ELV_REF_CLS" />
+          <ScalarProperty Name="ELV_Nom" ColumnName="ELV_Nom" />
+          <ScalarProperty Name="ELV_AnneeNais" ColumnName="ELV_AnneeNais" />
+          <ScalarProperty Name="ELV_VilleNais" ColumnName="ELV_VilleNais" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Epreuve_EPR">
+      <EntityTypeMapping TypeName="Model.T_Epreuve_EPR">
+        <MappingFragment StoreEntitySet="T_Epreuve_EPR">
+          <ScalarProperty Name="EPR_REF_ELV" ColumnName="EPR_REF_ELV" />
+          <ScalarProperty Name="EPR_Abrv" ColumnName="EPR_Abrv" />
+          <ScalarProperty Name="EPR_Note" ColumnName="EPR_Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Recompense_RCP">
+      <EntityTypeMapping TypeName="Model.T_Recompense_RCP">
+        <MappingFragment StoreEntitySet="T_Recompense_RCP">
+          <ScalarProperty Name="RCP_REF_ELV" ColumnName="RCP_REF_ELV" />
+          <ScalarProperty Name="RCP_Annee" ColumnName="RCP_Annee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_ELV_qqClasses_qqNoms">
+      <EntityTypeMapping TypeName="Model.V_ELV_qqClasses_qqNoms">
+        <MappingFragment StoreEntitySet="V_ELV_qqClasses_qqNoms">
+          <ScalarProperty Name="ELV_Id" ColumnName="ELV_Id" />
+          <ScalarProperty Name="ELV_REF_ELV" ColumnName="ELV_REF_ELV" />
+          <ScalarProperty Name="ELV_REF_CLS" ColumnName="ELV_REF_CLS" />
+          <ScalarProperty Name="ELV_Nom" ColumnName="ELV_Nom" />
+          <ScalarProperty Name="ELV_AnneeNais" ColumnName="ELV_AnneeNais" />
+          <ScalarProperty Name="ELV_VilleNais" ColumnName="ELV_VilleNais" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

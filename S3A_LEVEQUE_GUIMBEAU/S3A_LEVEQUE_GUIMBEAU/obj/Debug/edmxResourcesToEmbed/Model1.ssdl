@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="T_Classe_CLS">
+    <Key>
+      <PropertyRef Name="CLS_Num" />
+    </Key>
+    <Property Name="CLS_Num" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="CLS_Intit" Type="varchar" MaxLength="12" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_Eleve_ELV">
+    <Key>
+      <PropertyRef Name="ELV_Id" />
+    </Key>
+    <Property Name="ELV_Id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="ELV_REF_ELV" Type="numeric" Precision="3" Scale="0" />
+    <Property Name="ELV_REF_CLS" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="ELV_Nom" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="ELV_AnneeNais" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="ELV_VilleNais" Type="varchar" MaxLength="32" />
+  </EntityType>
+  <EntityType Name="T_Epreuve_EPR">
+    <Key>
+      <PropertyRef Name="EPR_REF_ELV" />
+      <PropertyRef Name="EPR_Abrv" />
+    </Key>
+    <Property Name="EPR_REF_ELV" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="EPR_Abrv" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="EPR_Note" Type="decimal" Precision="3" Scale="1" />
+  </EntityType>
+  <EntityType Name="T_Recompense_RCP">
+    <Key>
+      <PropertyRef Name="RCP_REF_ELV" />
+      <PropertyRef Name="RCP_Annee" />
+    </Key>
+    <Property Name="RCP_REF_ELV" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="RCP_Annee" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+  </EntityType>
+  <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'HTS+.dbo.V_ELV_qqClasses_qqNoms' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+  <EntityType Name="V_ELV_qqClasses_qqNoms">
+    <Key>
+      <PropertyRef Name="ELV_Id" />
+      <PropertyRef Name="ELV_REF_CLS" />
+      <PropertyRef Name="ELV_Nom" />
+      <PropertyRef Name="ELV_AnneeNais" />
+    </Key>
+    <Property Name="ELV_Id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="ELV_REF_ELV" Type="numeric" Precision="3" Scale="0" />
+    <Property Name="ELV_REF_CLS" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="ELV_Nom" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="ELV_AnneeNais" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="ELV_VilleNais" Type="varchar" MaxLength="32" />
+  </EntityType>
+  <Association Name="C_FK_ELV_CLS">
+    <End Role="T_Classe_CLS" Type="Self.T_Classe_CLS" Multiplicity="1" />
+    <End Role="T_Eleve_ELV" Type="Self.T_Eleve_ELV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Classe_CLS">
+        <PropertyRef Name="CLS_Num" />
+      </Principal>
+      <Dependent Role="T_Eleve_ELV">
+        <PropertyRef Name="ELV_REF_CLS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="C_FK_ELV_ELV">
+    <End Role="T_Eleve_ELV" Type="Self.T_Eleve_ELV" Multiplicity="0..1" />
+    <End Role="T_Eleve_ELV1" Type="Self.T_Eleve_ELV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Eleve_ELV">
+        <PropertyRef Name="ELV_Id" />
+      </Principal>
+      <Dependent Role="T_Eleve_ELV1">
+        <PropertyRef Name="ELV_REF_ELV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="C_FK_EPR_ELV">
+    <End Role="T_Eleve_ELV" Type="Self.T_Eleve_ELV" Multiplicity="1" />
+    <End Role="T_Epreuve_EPR" Type="Self.T_Epreuve_EPR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Eleve_ELV">
+        <PropertyRef Name="ELV_Id" />
+      </Principal>
+      <Dependent Role="T_Epreuve_EPR">
+        <PropertyRef Name="EPR_REF_ELV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="C_FK_RCP_ELV">
+    <End Role="T_Eleve_ELV" Type="Self.T_Eleve_ELV" Multiplicity="1" />
+    <End Role="T_Recompense_RCP" Type="Self.T_Recompense_RCP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Eleve_ELV">
+        <PropertyRef Name="ELV_Id" />
+      </Principal>
+      <Dependent Role="T_Recompense_RCP">
+        <PropertyRef Name="RCP_REF_ELV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="T_Classe_CLS" EntityType="Self.T_Classe_CLS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Eleve_ELV" EntityType="Self.T_Eleve_ELV" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Epreuve_EPR" EntityType="Self.T_Epreuve_EPR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Recompense_RCP" EntityType="Self.T_Recompense_RCP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="V_ELV_qqClasses_qqNoms" EntityType="Self.V_ELV_qqClasses_qqNoms" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [V_ELV_qqClasses_qqNoms].[ELV_Id] AS [ELV_Id], 
+    [V_ELV_qqClasses_qqNoms].[ELV_REF_ELV] AS [ELV_REF_ELV], 
+    [V_ELV_qqClasses_qqNoms].[ELV_REF_CLS] AS [ELV_REF_CLS], 
+    [V_ELV_qqClasses_qqNoms].[ELV_Nom] AS [ELV_Nom], 
+    [V_ELV_qqClasses_qqNoms].[ELV_AnneeNais] AS [ELV_AnneeNais], 
+    [V_ELV_qqClasses_qqNoms].[ELV_VilleNais] AS [ELV_VilleNais]
+    FROM [dbo].[V_ELV_qqClasses_qqNoms] AS [V_ELV_qqClasses_qqNoms]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="C_FK_ELV_CLS" Association="Self.C_FK_ELV_CLS">
+      <End Role="T_Classe_CLS" EntitySet="T_Classe_CLS" />
+      <End Role="T_Eleve_ELV" EntitySet="T_Eleve_ELV" />
+    </AssociationSet>
+    <AssociationSet Name="C_FK_ELV_ELV" Association="Self.C_FK_ELV_ELV">
+      <End Role="T_Eleve_ELV" EntitySet="T_Eleve_ELV" />
+      <End Role="T_Eleve_ELV1" EntitySet="T_Eleve_ELV" />
+    </AssociationSet>
+    <AssociationSet Name="C_FK_EPR_ELV" Association="Self.C_FK_EPR_ELV">
+      <End Role="T_Eleve_ELV" EntitySet="T_Eleve_ELV" />
+      <End Role="T_Epreuve_EPR" EntitySet="T_Epreuve_EPR" />
+    </AssociationSet>
+    <AssociationSet Name="C_FK_RCP_ELV" Association="Self.C_FK_RCP_ELV">
+      <End Role="T_Eleve_ELV" EntitySet="T_Eleve_ELV" />
+      <End Role="T_Recompense_RCP" EntitySet="T_Recompense_RCP" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

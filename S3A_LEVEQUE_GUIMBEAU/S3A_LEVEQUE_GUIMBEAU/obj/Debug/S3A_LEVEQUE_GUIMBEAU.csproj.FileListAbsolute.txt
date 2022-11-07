@@ -1,0 +1,17 @@
+C:\Users\loileveque\source\repos\S3A_LEVEQUE_GUIMBEAU\S3A_LEVEQUE_GUIMBEAU\obj\Debug\S3A_LEVEQUE_GUIMBEAU.csproj.AssemblyReference.cache
+C:\Users\loileveque\source\repos\S3A_LEVEQUE_GUIMBEAU\S3A_LEVEQUE_GUIMBEAU\obj\Debug\S3A_LEVEQUE_GUIMBEAU.csproj.SuggestedBindingRedirects.cache
+C:\Users\loileveque\source\repos\S3A_LEVEQUE_GUIMBEAU\S3A_LEVEQUE_GUIMBEAU\obj\Debug\S3A_LEVEQUE_GUIMBEAU.Form1.resources
+C:\Users\loileveque\source\repos\S3A_LEVEQUE_GUIMBEAU\S3A_LEVEQUE_GUIMBEAU\obj\Debug\S3A_LEVEQUE_GUIMBEAU.Properties.Resources.resources
+C:\Users\loileveque\source\repos\S3A_LEVEQUE_GUIMBEAU\S3A_LEVEQUE_GUIMBEAU\obj\Debug\S3A_LEVEQUE_GUIMBEAU.csproj.GenerateResource.cache
+C:\Users\loileveque\source\repos\S3A_LEVEQUE_GUIMBEAU\S3A_LEVEQUE_GUIMBEAU\obj\Debug\S3A_LEVEQUE_GUIMBEAU.csproj.CoreCompileInputs.cache
+C:\Users\loileveque\source\repos\S3A_LEVEQUE_GUIMBEAU\S3A_LEVEQUE_GUIMBEAU\bin\Debug\S3A_LEVEQUE_GUIMBEAU.exe.config
+C:\Users\loileveque\source\repos\S3A_LEVEQUE_GUIMBEAU\S3A_LEVEQUE_GUIMBEAU\bin\Debug\S3A_LEVEQUE_GUIMBEAU.exe
+C:\Users\loileveque\source\repos\S3A_LEVEQUE_GUIMBEAU\S3A_LEVEQUE_GUIMBEAU\bin\Debug\S3A_LEVEQUE_GUIMBEAU.pdb
+C:\Users\loileveque\source\repos\S3A_LEVEQUE_GUIMBEAU\S3A_LEVEQUE_GUIMBEAU\bin\Debug\EntityFramework.dll
+C:\Users\loileveque\source\repos\S3A_LEVEQUE_GUIMBEAU\S3A_LEVEQUE_GUIMBEAU\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\loileveque\source\repos\S3A_LEVEQUE_GUIMBEAU\S3A_LEVEQUE_GUIMBEAU\bin\Debug\EntityFramework.xml
+C:\Users\loileveque\source\repos\S3A_LEVEQUE_GUIMBEAU\S3A_LEVEQUE_GUIMBEAU\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\loileveque\source\repos\S3A_LEVEQUE_GUIMBEAU\S3A_LEVEQUE_GUIMBEAU\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\loileveque\source\repos\S3A_LEVEQUE_GUIMBEAU\S3A_LEVEQUE_GUIMBEAU\obj\Debug\S3A_LEVEQUE_GUIMBEAU.csproj.CopyComplete
+C:\Users\loileveque\source\repos\S3A_LEVEQUE_GUIMBEAU\S3A_LEVEQUE_GUIMBEAU\obj\Debug\S3A_LEVEQUE_GUIMBEAU.exe
+C:\Users\loileveque\source\repos\S3A_LEVEQUE_GUIMBEAU\S3A_LEVEQUE_GUIMBEAU\obj\Debug\S3A_LEVEQUE_GUIMBEAU.pdb
