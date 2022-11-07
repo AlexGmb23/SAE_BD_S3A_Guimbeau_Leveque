@@ -14,11 +14,11 @@ HAVING (et donc CUBE, GROUPING SETS et ROLLUP) et fonctions de fenêtrage (ROW_N
 
 ## __Les requetes__
 1. Afficher la moyenne des notes et le
-nombre de notes des 42 premiers élèves (par rapport à son ID) pour chacun des DS n°1, 2, et 3 et afficher en plus le cumuls par élève et épreuve, par élève, et pour tous les élèves \
+nombre de notes des 42 premiers élèves (par rapport à son ID) pour chacun des DS n°1, 2, et 3 et afficher en plus le cumuls par élève et épreuve, par élève, et pour tous les élèves
 - <u>La requete</u> :
 >SELECT EPR_REF_ELV , EPR_Abrv , AVG(EPR_Note) Moy_Epr_Note , COUNT(*) Nb_Epr_Elv \
 FROM T_Epreuve_EPR \
--- sans JOIN T_Eleve_ELV ON ELV_Id = EPR_REF_ELV \
+_-- sans JOIN T_Eleve_ELV ON ELV_Id = EPR_REF_ELV_ \
 WHERE EPR_REF_ELV < 42 AND EPR_Abrv BETWEEN 'CC1' AND 'CC3' \
 GROUP BY ROLLUP( EPR_REF_ELV , EPR_Abrv ) \
 ORDER BY EPR_REF_ELV DESC , EPR_Abrv DESC
