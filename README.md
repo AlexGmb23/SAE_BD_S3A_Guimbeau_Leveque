@@ -41,3 +41,6 @@ ORDER BY ELV_Id DESC , RCP_Annee
 - 07/11/2022 : \
 Création du git et du ReadMe \
 Début du code : Class Eleve, (à complété)
+- 08/11/2022 : \
+
+sujet du projet [ici](2022-23_BD=R3.07_S3_Projet.pdf)
