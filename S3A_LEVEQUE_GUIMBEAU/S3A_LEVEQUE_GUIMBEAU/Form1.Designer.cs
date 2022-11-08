@@ -30,6 +30,7 @@
         {
             this.buttonSrcIdRcp = new System.Windows.Forms.Button();
             this.buttonMoy = new System.Windows.Forms.Button();
+            this.listBoxReponse = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // buttonSrcIdRcp
@@ -50,11 +51,20 @@
             this.buttonMoy.Text = "Requete moyennes et nombre d\'épreuves ";
             this.buttonMoy.UseVisualStyleBackColor = true;
             // 
+            // listBoxReponse
+            // 
+            this.listBoxReponse.FormattingEnabled = true;
+            this.listBoxReponse.Location = new System.Drawing.Point(13, 13);
+            this.listBoxReponse.Name = "listBoxReponse";
+            this.listBoxReponse.Size = new System.Drawing.Size(395, 420);
+            this.listBoxReponse.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.listBoxReponse);
             this.Controls.Add(this.buttonMoy);
             this.Controls.Add(this.buttonSrcIdRcp);
             this.Name = "Form1";
@@ -67,6 +77,7 @@
 
         private System.Windows.Forms.Button buttonSrcIdRcp;
         private System.Windows.Forms.Button buttonMoy;
+        private System.Windows.Forms.ListBox listBoxReponse;
     }
 }
 

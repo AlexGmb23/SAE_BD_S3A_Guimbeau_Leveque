@@ -13,24 +13,56 @@ namespace S3A_LEVEQUE_GUIMBEAU
     public partial class Form1 : Form
     {
         static public Entities donneesSQL;
-        List<Eleve> eleves;
+        List<T_Eleve_ELV> eleves;
         public Form1()
         {
             InitializeComponent();
             donneesSQL = new Entities();
+            eleves = new List<T_Eleve_ELV>();
             fillEleves();
+            remplissageRequete1();
         }
+
+
 
         private void fillEleves()
         {
             var lesEleves = from Eleve in donneesSQL.T_Eleve_ELV
+                            orderby Eleve.ELV_Id descending
                             select Eleve;
-            foreach (var e in lesEleves)
+            foreach (var eleveImporte in lesEleves)
             {
-                Eleve elv = new Eleve(id: (int)e.ELV_Id, name: e.ELV_Nom, refElv: (int)e.ELV_REF_ELV, refCls: (int)e.ELV_REF_CLS, moyElv: 0, nbEpr: 0);
-                eleves.Add(elv);
+                eleves.Add(eleveImporte);
             }
-            
+        }
+
+        private void remplissageRequete1()
+        {
+            foreach (T_Eleve_ELV elv in eleves)
+            {
+                if (elv.ELV_Id < 42)
+                {
+                    var cacheRef = elv.ELV_REF_ELV;
+                    var nbEpreuves = 0;
+                    var valMoyennes = 0.0;
+                    var aSubis = false;
+                    foreach (T_Epreuve_EPR eprElv in elv.T_Epreuve_EPR)
+                    {
+                        if(eprElv.EPR_Abrv.Equals("CC1") || eprElv.EPR_Abrv.Equals("CC2") || eprElv.EPR_Abrv.Equals("CC3"))
+                        {
+                            aSubis = true;
+                            if (eprElv.EPR_Note != null)
+                            {
+                                valMoyennes += (float)eprElv.EPR_Note;
+                            }
+                            nbEpreuves += 1;
+                            listBoxReponse.Items.Add(eprElv.EPR_REF_ELV + " " + eprElv.EPR_Abrv + " " + eprElv.EPR_Note + " 1");
+                        }
+                        
+                    }
+                    if (aSubis) { listBoxReponse.Items.Add(elv.ELV_Id + " null " + valMoyennes / nbEpreuves + nbEpreuves); }
+                }
+            }
         }
     }
 }
