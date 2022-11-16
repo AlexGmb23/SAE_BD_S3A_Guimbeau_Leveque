@@ -35,28 +35,32 @@
             // 
             // buttonSrcIdRcp
             // 
-            this.buttonSrcIdRcp.Location = new System.Drawing.Point(606, 78);
+            this.buttonSrcIdRcp.Location = new System.Drawing.Point(659, 193);
             this.buttonSrcIdRcp.Name = "buttonSrcIdRcp";
             this.buttonSrcIdRcp.Size = new System.Drawing.Size(129, 48);
             this.buttonSrcIdRcp.TabIndex = 0;
             this.buttonSrcIdRcp.Text = "Requete identifiant/année recompense";
             this.buttonSrcIdRcp.UseVisualStyleBackColor = true;
+            this.buttonSrcIdRcp.Click += new System.EventHandler(this.buttonSrcIdRcp_Click);
             // 
             // buttonMoy
             // 
-            this.buttonMoy.Location = new System.Drawing.Point(606, 291);
+            this.buttonMoy.Location = new System.Drawing.Point(659, 44);
             this.buttonMoy.Name = "buttonMoy";
             this.buttonMoy.Size = new System.Drawing.Size(129, 48);
             this.buttonMoy.TabIndex = 1;
             this.buttonMoy.Text = "Requete moyennes et nombre d\'épreuves ";
             this.buttonMoy.UseVisualStyleBackColor = true;
+            this.buttonMoy.Click += new System.EventHandler(this.buttonMoy_Click);
             // 
             // listBoxReponse
             // 
+            this.listBoxReponse.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxReponse.FormattingEnabled = true;
+            this.listBoxReponse.ItemHeight = 16;
             this.listBoxReponse.Location = new System.Drawing.Point(13, 13);
             this.listBoxReponse.Name = "listBoxReponse";
-            this.listBoxReponse.Size = new System.Drawing.Size(395, 420);
+            this.listBoxReponse.Size = new System.Drawing.Size(598, 420);
             this.listBoxReponse.TabIndex = 2;
             // 
             // Form1
